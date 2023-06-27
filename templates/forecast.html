@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>5-Day Forecast</title>
+    <style>
+        body {
+            background-image: url('static/images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            color: black;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            max-width: 800px;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid black;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            background-color: #007bff;
+            color: black;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>5-Day Weather Forecast for {{ city }}</h1>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Temperature</th>
+            <th>Description</th>
+        </tr>
+        {% for day in forecast_data['list'] %}
+        <tr>
+            <td>{{ day['dt_txt'] }}</td>
+            <td>{{ day['main']['temp'] }}°C</td>
+            <td>{{ day['weather'][0]['description'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <form method="POST" action="/weather">
+        <input type="hidden" name="city" value="{{ city }}">
+        <button type="submit">Go Back to Current Weather</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>No Forecast</title>
+</head>
+<body>
+    <h1>No Forecast Available for {{ city }}</h1>
+    <form method="POST" action="/weather">
+        <input type="hidden" name="city" value="{{ city }}">
+        <button type="submit">Go Back to Current Weather</button>
+    </form>
+</body>
+</html>

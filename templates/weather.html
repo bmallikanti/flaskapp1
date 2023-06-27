@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Current Weather</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            background-image: url('static/images/weathercity.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+           .temperature {
+            font-family: 'Georgia', serif;
+            font-size: 20px;
+            font-weight: normal; /* Remove bold style */
+            color: #333; /* Subtle color for temperature */
+            /* Other styles for temperature */
+        }
+
+        .description {
+            font-family: 'Georgia', serif;
+            font-size: 20px;
+            font-weight: normal; /* Remove bold style */
+            color: #666; /* Subtle color for description */
+            /* Other styles for description */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h1, h2 {
+            margin-bottom: 10px;
+        }
+
+        img {
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Current Weather in {{ city }}</h1>
+        <div>
+            <h2 class="temperature">Temperature: {{ current_weather_data['main']['temp'] }}°C</h2>
+            <h2 class="description">Description: {{ current_weather_data['weather'][0]['description'] }}</h2>
+        </div>
+        <img src="{{ icon_url }}" alt="Weather Icon">
+        <form method="POST" action="/forecast">
+            <input type="hidden" name="city" value="{{ city }}">
+            <button type="submit">View 5-Day Forecast</button>
+        </form>
+    </div>
+</body>
+</html>

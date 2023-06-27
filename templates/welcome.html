@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        .content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"], button {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <video id="video-bg" autoplay muted loop>
+        <source src="static/images/welcomevideo.mp4" type="video/mp4">
+    </video>
+
+    <div class="content">
+        <h1>Welcome to Weather App</h1>
+        <p>Enter a city to get the current weather:</p>
+        <form method="POST" action="/weather">
+            <input type="text" name="city" placeholder="Enter city" required>
+            <button type="submit">Get Current Weather</button>
+        </form>
+    </div>
+</body>
+</html>
